@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StraightSkeletonDemo", "StraightSkeletonDemo\StraightSkeletonDemo.vcxproj", "{D54D4D6A-6209-433C-9713-E577FF5E0C52}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D54D4D6A-6209-433C-9713-E577FF5E0C52}.Debug|x64.ActiveCfg = Debug|x64
+		{D54D4D6A-6209-433C-9713-E577FF5E0C52}.Debug|x64.Build.0 = Debug|x64
+		{D54D4D6A-6209-433C-9713-E577FF5E0C52}.Debug|x86.ActiveCfg = Debug|Win32
+		{D54D4D6A-6209-433C-9713-E577FF5E0C52}.Debug|x86.Build.0 = Debug|Win32
+		{D54D4D6A-6209-433C-9713-E577FF5E0C52}.Release|x64.ActiveCfg = Release|x64
+		{D54D4D6A-6209-433C-9713-E577FF5E0C52}.Release|x64.Build.0 = Release|x64
+		{D54D4D6A-6209-433C-9713-E577FF5E0C52}.Release|x86.ActiveCfg = Release|Win32
+		{D54D4D6A-6209-433C-9713-E577FF5E0C52}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A6A8A34-C908-4DE2-B9D7-95DE6DD53806}
+	EndGlobalSection
+EndGlobal
