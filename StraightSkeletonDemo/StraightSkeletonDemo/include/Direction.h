@@ -1,8 +1,6 @@
 #ifndef DIRECTION_H 
 #define DIRECTION_H
 #include "Point.h"
-#include <iostream> 
-#include <math.h>
 
 class Direction{
 public:
@@ -17,18 +15,25 @@ public:
 		this->deltaX = deltaX;
 		this->deltaY = deltaY;
 	}
+
     void makeUnit(){
 		double M = mod();
-		cout << M << endl;
+		//cout << M << endl;
         deltaX = deltaX / M;
         deltaY = deltaY / M;
     }
-        
 	double mod(){
-		return sqrt(deltaX*deltaX + deltaY*deltaY);
+		return sqrt(deltaX * deltaX + deltaY * deltaY);
 	}
     double operator * (const Direction &rhs){
 		return (deltaX * rhs.deltaY - deltaY * rhs.deltaX);
 	} 
+	void print() {
+		cout << "<" << deltaX << "," << deltaY << ">" << endl;
+	}
+	string toString() {
+		string re = "<" + to_string(deltaX) + "," + to_string(deltaY) + ">";
+		return re;
+	}
 };
 #endif

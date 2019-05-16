@@ -72,11 +72,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\GitHub\StraightSkeletonDemo\StraightSkeletonDemo\head;D:\GitHub\StraightSkeletonDemo\StraightSkeletonDemo\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\GitHub\StraightSkeletonDemo\StraightSkeletonDemo\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\StraightSkeletonDemo\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\StraightSkeletonDemo\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\StraightSkeletonDemo\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\StraightSkeletonDemo\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -104,7 +106,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
@@ -115,6 +117,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -156,7 +159,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="glad.c" />
     <ClCompile Include="source\CLL.cpp" />
     <ClCompile Include="source\CLLNode.cpp" />
     <ClCompile Include="source\Intersection.cpp" />
@@ -174,7 +176,6 @@
     <ClInclude Include="include\Line.h" />
     <ClInclude Include="include\Point.h" />
     <ClInclude Include="include\Ray.h" />
-    <ClInclude Include="include\shader.h" />
     <ClInclude Include="include\StraightSkeleton.h" />
     <ClInclude Include="include\Vertex.h" />
   </ItemGroup>

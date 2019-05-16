@@ -15,6 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Ray.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Vertex.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="source\CLL.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -24,36 +33,12 @@
     <ClCompile Include="source\Intersection.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="source\Ray.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="source\StraightSkeleton.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Vertex.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="glad.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="source\test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\CLL.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\CLLNode.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="include\Direction.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Edge.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Intersection.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="include\Line.h">
@@ -65,13 +50,22 @@
     <ClInclude Include="include\Ray.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\shader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\StraightSkeleton.h">
+    <ClInclude Include="include\Edge.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="include\Vertex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CLL.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CLLNode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Intersection.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StraightSkeleton.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

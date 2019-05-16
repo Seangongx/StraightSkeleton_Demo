@@ -1,1 +1,3 @@
-﻿  StraightSkeletonDemo.vcxproj -> D:\GitHub\StraightSkeletonDemo\Debug\StraightSkeletonDemo.exe
+﻿  StraightSkeleton.cpp
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\source\straightskeleton.cpp(12): warning C4018: “<”: 有符号/无符号不匹配
+  StraightSkeletonDemo.vcxproj -> D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\StraightSkeletonDemo.exe

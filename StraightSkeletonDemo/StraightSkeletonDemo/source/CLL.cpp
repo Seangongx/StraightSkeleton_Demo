@@ -1,50 +1,63 @@
 #include "CLL.h"
-//#include "CLLNode.h"
+#include "CLLNode.h"
 
 CLL::CLL(){
-    first = nullptr;
+	head = nullptr;
 }
 
-CLL::CLL(CLLNode* first){
-    this->first = first;
+CLL::CLL(CLLNode* head){
+    this->head = head;
 }
 
 bool CLL::verifyNode(CLLNode* node){
-	return (node->container == (this));
+	return (node->head == this->head);
 }
 
 void CLL::print(){
-    if(first != nullptr){
-        cout << "CLL: " << endl;
-		cout << "first: " << first->item->coord.toString() << endl;
-        CLLNode* x = first;
+    if(head != nullptr){
+        cout << "current CLL and the head: " << head->item->coord.toString() << endl;
+        CLLNode *x = head;
         do{
 			cout << x->item->coord.toString() << "->";
 			x = x->forward;
-		} while (x != first);
+		} while (x != head);
     }
     cout << endl;
 }
 
-void CLL::addLast(Vertex* node){
-	cout << "//newNode to be returned" << endl;
-    if(first == nullptr){
-		cout << 1 << endl;
-		CLLNode *clln(new CLLNode(node));
-		cout << "inside al" << clln->item->coord.toString() << clln << endl;
-        //node->cllNode = clln;
-		first = clln;
-		cout << "first: " << first->item->coord.toString() << "stb" << clln->item->coord.toString() << endl;
-    }
-    else{
-		cout << 2 << node->coord.toString() << endl;
+//void CLL::addLast(Vertex *_v){
+//    if(head == nullptr){
+//		CLLNode *clln(new CLLNode(_v));
+//		cout << "NO head so we add head:" << clln->item->coord.toString() << "and the pointer:" << clln << endl;
+//        //_v->cllNode = clln;这句话暂时注释看看情况
+//		head = clln;
+//    }
+//	else {
+//		cout << "cannot create no head node!" << endl;
+//	}
+//}
 
-		cout << "first: " << first->item->coord.toString() << endl;
-		cout << "first->back: " << first->back->item->coord.toString() << endl;
-		CLLNode* clln(new CLLNode((this), node, first, first->back));
-		cout << "first: " << first->item->coord.toString() << endl;
-		print();
-		node->cllNode = clln;
+//如果不是一次性添加完，则print会出现问题
+void CLL::addLast(CLLNode *vertex, CLLNode *forward, CLLNode *back) {
+	if(head == nullptr){
+		cout << "NO head so we add head:" << vertex->item->coord.toString() << " and the pointer:" << vertex << endl;
+		//_v->cllNode = clln;这句话暂时注释看看情况
+		head = vertex;//同时顶点的head就是顶点本身
+		vertex->forward = forward;
+		vertex->back = back;
+		forward->back = vertex;
+		back->forward = vertex;
+		forward->forward = head;
+		head->back = forward;
     }
+	else {
+		//CLLNode* clln(new CLLNode(_v, head, head->back, head));//切记这里的错误是赋值没有附上
+		//CLLNode* clln(new CLLNode(vertex, forward, back, head));
+		cout << "add node at rear:" << vertex->item->coord.toString() << " and the pointer:" << vertex << endl;
+		vertex->head = head;
+		vertex->forward = forward;
+		vertex->back = back;
+		forward->back = vertex;
+		back->forward = vertex;
+	}
 }
-

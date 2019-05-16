@@ -1,57 +1,61 @@
 #include "CLLNode.h"
-#include "Vertex.h"
-#include "CLL.h"
 
 CLLNode::CLLNode() {};
 
-CLLNode::CLLNode(Vertex *_value){
-	cout << "inside Cllnode" << this << endl;
-	cout << _value->coord.toString() << endl;
-	item = _value;
-
-	_value->cllNode = (this);
+CLLNode::CLLNode(Vertex *_v){
+	item = _v;
 	forward = (this);
 	back = (this);
-	_value->processed = false;
+	head = (this);
+
+	//_v->cllNode = (this);
+	_v->processed = false;
+	cout << "init single Cllnode" << item->coord.toString() << "and its pointer:" << this << endl;
 }
 
-CLLNode::CLLNode(CLL *_cont, Vertex *_value){
-	item = _value;
-    _value->cllNode = (this);
-	container = _cont;
-	forward = (this);
-	back = (this);
-    _value->processed = false;
-}
+//CLLNode::CLLNode(Vertex *_v){
+//	cout << "inita Cllnode current: " << _v->coord.toString() << endl;
+//	item = _v;
+//	forward = (this);
+//	back = (this);
+//
+//	//_v->cllNode = (this);
+//	_v->processed = false;
+//}
 
-CLLNode::CLLNode(CLL *_cont, Vertex *_value, CLLNode *_f,CLLNode *_b){
-	item = _value;
-    cout << item->coord.toString() << endl;
-    cout << "F: " << _f->item->coord.toString() << endl;
-    cout << "B: " << _b->item->coord.toString() << endl;
-
-	_value->cllNode = (this);
-	container = _cont;
+CLLNode::CLLNode(Vertex *_v, CLLNode *_f,CLLNode *_b, CLLNode * _h){
+	item = _v;
 	forward = _f;
-	back= _b;
+	back = _b;
+	head = _h;
+   
+	//_v->cllNode = (this);
 	_b->forward = (this);
 	_f->back= (this);
-	_value->processed = false;
-    cout << "Done with new addition!" << endl;
+	_v->processed = false;
+
+	cout << "init current Cllnode: " << item->coord.toString() << "and its pointer:" << this << endl;
+	cout << "it's forward node is: " << forward->item->coord.toString() << endl;
+	cout << "and it's backward node is: " << back->item->coord.toString() << endl;
 }
 
 void CLLNode::detach(){
 	back->forward = forward;
 	forward->back = back;
 
-	forward = back= NULL;
-	container = NULL;
+	forward = nullptr;
+	back = nullptr;
+	head = nullptr;
 }
 
-void CLLNode::insertBetween(CLL *_cont, CLLNode *_prev,CLLNode *_next){
+void CLLNode::insertBetween(CLLNode *_prev, CLLNode *_next) {
 	_prev->forward = (this);
-	this->forward = _next;
+	forward = _next;
 	_next->back = (this);
-	this->back = _prev;
-	this->container = _cont;
+	back = _prev;
 }
+
+void CLLNode::setHead(CLLNode *_head) {
+	head = _head;
+}
+

@@ -1,14 +1,8 @@
 #ifndef VERTEX_H
 #define VERTEX_H
-
-class Vertex;
-
-#include "Point.h"
-#include "CLLNode.h"
 #include <memory>
-#include "Ray.h"
 #include "Edge.h"
-#include "Direction.h"
+#include "Ray.h"
 
 enum Type{
 	EDGE, 
@@ -21,11 +15,14 @@ public:
 	Ray *bisector;
 	Edge *inEdge;
 	Edge *outEdge;
-    CLLNode *cllNode;
+    //CLLNode *cllNode;
 	bool processed;
 	Type type;
+
 	Vertex(double x, double y);
 	Vertex(Point<double> X);
+	~Vertex();
+
 	Vertex operator - (const Vertex &rhs);
 	double operator * (const Vertex &rhs);
 	Type getType();

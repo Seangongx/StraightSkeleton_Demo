@@ -11,6 +11,7 @@ public:
 	Point() {
 		x = 0; y = 0;
 	}
+	~Point() {};
 	Point(T x, T y) {
 		this->x = x;
 		this->y = y;
@@ -29,8 +30,8 @@ public:
 		cout << "(" << x << "," << y << ")" << endl;
 	}
 	string toString() {
-		string res = "(" + to_string(x) + "," + to_string(y) + ")";
-		return res;
+		string re = "(" + to_string(x) + "," + to_string(y) + ")";
+		return re;
 	}
 };
 #endif

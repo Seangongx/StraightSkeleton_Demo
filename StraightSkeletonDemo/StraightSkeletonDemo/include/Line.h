@@ -1,12 +1,13 @@
 #ifndef LINE_H 
 #define LINE_H
-
-//源代码有错误，已修改(p为点1，q为点2)
+#include "Point.h"
+//源代码有错误，已修改(p为源点1，q为端点2)
 
 class Line{
 public:
 	double a, b, c;	
 	Line() {};
+	~Line() {};
 	Line(double a, double b, double c){
 		this->a  = a;
 		this->b  = b;
@@ -57,6 +58,13 @@ public:
             b = q.x - p.x;
             c = -p.x * a - p.y * b;
         }	
+	}
+	void print() {
+		cout << a << "x + " << b << "y + " << c << " = 0" << endl;
+	}
+	string toString() {
+		string re = to_string(a) + "x + " + to_string(b) + "y + " + to_string(c) + " = 0";
+		return re;
 	}
 };
 #endif

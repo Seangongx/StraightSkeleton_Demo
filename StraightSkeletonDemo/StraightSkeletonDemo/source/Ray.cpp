@@ -1,25 +1,30 @@
-#include "Vertex.h"
 #include "Ray.h"
 
 Ray::Ray() {};
 
-Ray::Ray(Vertex* s, Direction dir){
+Ray::Ray(Point<double> s, Direction dir){
 	source = s;
 	direction = dir;
+	rayline = getSupportingLine();
 }
+
+Ray::~Ray() {};
 
 Line Ray::getSupportingLine(){
 	double a, b, c;
 	//a = -direction.deltaY;
-	//b= direction.deltaX;
+	//b = direction.deltaX;
 	a = direction.deltaY;
 	b = -direction.deltaX;
-	c = -a * source->coord.x - b * source->coord.y;
+	c = -a * source.x - b * source.y;
 	Line L(a, b, c);
 	return L;
 }
+
 void Ray::print(){
-	cout << "(" << source->coord.x << "," << source->coord.y <<")" << endl;
-	cout << direction.deltaX << ", " << direction.deltaY << endl;
+	cout << "Source point:";
+	source.print();
+	cout << "Direction vector:";
+	direction.print();
 }
 

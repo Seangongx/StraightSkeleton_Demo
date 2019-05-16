@@ -1,17 +1,17 @@
 #ifndef RAY_H
 #define RAY_H
-
-class Ray;
-#include "Vertex.h"
 #include "Direction.h"
 #include "Line.h"
 
 class Ray{
 public:
-	Vertex *source;
+	//Vertex *source;
+	Point<double> source;
 	Direction direction;
+	Line rayline;
     Ray();
-	Ray(Vertex *s, Direction dir);
+	Ray(Point<double> s, Direction dir);
+	~Ray();
 	Line getSupportingLine();
 	void print();
 };

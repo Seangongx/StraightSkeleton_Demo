@@ -1,18 +1,18 @@
 #ifndef CLL_H
 #define CLL_H
-
-class CLL;
-
 #include "CLLNode.h"
 
 class CLL{
 public:
-	CLLNode *first;
-	CLL();
+	CLLNode *head;
 
-	CLL(CLLNode *first);
+	CLL();
+	CLL(CLLNode *head);
+
+
     void print();
 	bool verifyNode(CLLNode *node);
-    void addLast(Vertex *node);
+    //void addLast(Vertex *_v);
+	void addLast(CLLNode *vertex, CLLNode *forward, CLLNode *back);
 };
 #endif
