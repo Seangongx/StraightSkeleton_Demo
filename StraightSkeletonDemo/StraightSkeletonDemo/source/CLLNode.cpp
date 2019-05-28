@@ -10,18 +10,11 @@ CLLNode::CLLNode(Vertex *_v){
 
 	//_v->cllNode = (this);
 	_v->processed = false;
-	cout << "init single Cllnode" << item->coord.toString() << "and its pointer:" << this << endl;
-}
 
-//CLLNode::CLLNode(Vertex *_v){
-//	cout << "inita Cllnode current: " << _v->coord.toString() << endl;
-//	item = _v;
-//	forward = (this);
-//	back = (this);
-//
-//	//_v->cllNode = (this);
-//	_v->processed = false;
-//}
+#ifdef INFORMATION
+	cout << "init single Cllnode" << item->coord.toString() << "and its pointer:" << this << endl;
+#endif
+}
 
 CLLNode::CLLNode(Vertex *_v, CLLNode *_f,CLLNode *_b, CLLNode * _h){
 	item = _v;
@@ -34,9 +27,11 @@ CLLNode::CLLNode(Vertex *_v, CLLNode *_f,CLLNode *_b, CLLNode * _h){
 	_f->back= (this);
 	_v->processed = false;
 
+#ifdef INFORMATION
 	cout << "init current Cllnode: " << item->coord.toString() << "and its pointer:" << this << endl;
 	cout << "it's forward node is: " << forward->item->coord.toString() << endl;
 	cout << "and it's backward node is: " << back->item->coord.toString() << endl;
+#endif
 }
 
 void CLLNode::detach(){

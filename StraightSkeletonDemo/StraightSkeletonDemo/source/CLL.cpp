@@ -40,7 +40,9 @@ void CLL::print(){
 //如果不是一次性添加完，则print会出现问题
 void CLL::addLast(CLLNode *vertex, CLLNode *forward, CLLNode *back) {
 	if(head == nullptr){
+#ifdef INFORMATION
 		cout << "NO head so we add head:" << vertex->item->coord.toString() << " and the pointer:" << vertex << endl;
+#endif
 		//_v->cllNode = clln;这句话暂时注释看看情况
 		head = vertex;//同时顶点的head就是顶点本身
 		vertex->forward = forward;
@@ -53,7 +55,9 @@ void CLL::addLast(CLLNode *vertex, CLLNode *forward, CLLNode *back) {
 	else {
 		//CLLNode* clln(new CLLNode(_v, head, head->back, head));//切记这里的错误是赋值没有附上
 		//CLLNode* clln(new CLLNode(vertex, forward, back, head));
+#ifdef INFORMATION
 		cout << "add node at rear:" << vertex->item->coord.toString() << " and the pointer:" << vertex << endl;
+#endif
 		vertex->head = head;
 		vertex->forward = forward;
 		vertex->back = back;

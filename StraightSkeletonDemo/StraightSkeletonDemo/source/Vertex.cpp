@@ -38,22 +38,32 @@ Type Vertex::getType(){
 }
 
 void Vertex::calculateBisector(){
+#ifdef INFORMATION
     cout << "Calculate Bisector for " << coord.toString() << endl;
 	cout << "the inward edge:" << inEdge->end.toString() <<  inEdge->start.toString()<< endl;
 	cout << "and the outward edge:" << outEdge->end.toString() <<  outEdge->start.toString()<< endl;
-
+#endif
 	Direction Din(inEdge->end, inEdge->start);
 	Direction Dout(outEdge->start, outEdge->end);
 	Din.makeUnit();
 	Dout.makeUnit();
 
-	Din.deltaX = (Din.deltaX + Dout.deltaX)/2;
-	Din.deltaY = (Din.deltaY + Dout.deltaY)/2;
+	if (abs(Din.deltaX + Dout.deltaX) <= DISTANCE)
+		Din.deltaX = 0.0;
+	else
+		Din.deltaX = (Din.deltaX + Dout.deltaX)/2;
+	if (abs(Din.deltaY + Dout.deltaY) <= DISTANCE)
+		Din.deltaY = 0.0;
+	else
+		Din.deltaY = (Din.deltaY + Dout.deltaY)/2;
+
 	bisector->source = Point<double>(coord.x, coord.y);
 	bisector->direction = Din;
 	bisector->rayline = bisector->getSupportingLine();
+#ifdef INFORMATION
 	cout << "so the bisector is:";
 	bisector->print();
+#endif
 }
 
 

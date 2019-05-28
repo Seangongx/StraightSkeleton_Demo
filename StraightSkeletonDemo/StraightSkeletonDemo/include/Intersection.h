@@ -4,7 +4,7 @@
 #include <utility> //pair<>
 #include "CLLNode.h"
 
-constexpr double DISTANCE = 0.000001;
+//constexpr double DISTANCE = 0.000001;
 
 #define V_P_P vector<pair<Point<double>, Point<double>>>
 

@@ -14,7 +14,9 @@ Intersection::Intersection(CLLNode *_va, CLLNode *_vb) {
 void Intersection::intersect(Ray* ray1, Ray* ray2) {
 	Line L1 = ray1->getSupportingLine();
 	Line L2 = ray2->getSupportingLine();
+#ifdef INFORMATION
 	cout << L1.toString() << " intersect with " << L2.toString() << endl;
+#endif
 	double det = L1.a*L2.b - L2.a*L1.b;
 	double x, y;
 	if (det == 0) {
@@ -34,8 +36,11 @@ void Intersection::intersect(Ray* ray1, Ray* ray2) {
 }
 
 double Intersection::getDistance() {
+	
 	Point<double> Vtx = Va->item->coord;
-	Point<double> End = Va->item->outEdge->end;//是否就是vb?
+	//End不能是Va->item->outEdge->end,因为之后的动态节点没有设置va和vb的连接边了
+	Point<double> End = Vb->item->coord;//
+
 	Direction VE(Vtx, End);
 	Direction VP(Vtx, Pos);
 	distance = abs((VP*VE) / (VE.mod()));//等面积法
@@ -45,7 +50,7 @@ double Intersection::getDistance() {
 //存疑
 bool Intersection::isProcessed() {
 	//According to Paper Va->processed && Vb->processed
-	return (Va->item->processed && Vb->item->processed);
+	return (Va->item->processed || Vb->item->processed);
 }
 
 bool Intersection::createArc(V_P_P &Arc) {
@@ -84,3 +89,4 @@ bool Intersection::operator == (const Intersection &rhs) const {
 	bool pvb = this->Vb == rhs.Vb;
 	return (cx && cy && pva && pvb);
 }
+

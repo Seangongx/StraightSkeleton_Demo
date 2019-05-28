@@ -159,12 +159,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="glad.c" />
+    <ClCompile Include="ShowSkeleton.cpp" />
     <ClCompile Include="source\CLL.cpp" />
     <ClCompile Include="source\CLLNode.cpp" />
     <ClCompile Include="source\Intersection.cpp" />
     <ClCompile Include="source\Ray.cpp" />
     <ClCompile Include="source\StraightSkeleton.cpp" />
-    <ClCompile Include="source\test.cpp" />
     <ClCompile Include="source\Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +177,7 @@
     <ClInclude Include="include\Line.h" />
     <ClInclude Include="include\Point.h" />
     <ClInclude Include="include\Ray.h" />
+    <ClInclude Include="include\shader.h" />
     <ClInclude Include="include\StraightSkeleton.h" />
     <ClInclude Include="include\Vertex.h" />
   </ItemGroup>

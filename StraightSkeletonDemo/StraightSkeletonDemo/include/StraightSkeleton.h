@@ -25,7 +25,7 @@ public:
 	StraightSkeleton(vector<Point<double>> P);
 
 	double dist(Point<double> v1, Point<double> v2);
-    void findNearestI(CLLNode *vminus1, CLLNode *v, CLLNode *vplus1);
+    void findNearestI(CLLNode *vminus1, CLLNode *v, CLLNode *vplus1, double oldDis);
     void processIntersections();
 };
 #endif

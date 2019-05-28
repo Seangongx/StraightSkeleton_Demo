@@ -1,3 +1,7 @@
-﻿  StraightSkeleton.cpp
-d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\source\straightskeleton.cpp(12): warning C4018: “<”: 有符号/无符号不匹配
+﻿  ShowSkeleton.cpp
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(38): warning C4018: “<”: 有符号/无符号不匹配
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(155): warning C4018: “<”: 有符号/无符号不匹配
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(164): warning C4018: “<”: 有符号/无符号不匹配
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(169): warning C4018: “<”: 有符号/无符号不匹配
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(173): warning C4018: “<”: 有符号/无符号不匹配
   StraightSkeletonDemo.vcxproj -> D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\StraightSkeletonDemo.exe

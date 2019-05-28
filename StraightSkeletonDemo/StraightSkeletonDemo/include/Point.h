@@ -4,10 +4,14 @@
 #include <string>
 using namespace std;
 
+//点的精度
+constexpr double DISTANCE = 0.000001;
+
 template<class T>
 class Point {
 public:
 	T x, y;
+
 	Point() {
 		x = 0; y = 0;
 	}
