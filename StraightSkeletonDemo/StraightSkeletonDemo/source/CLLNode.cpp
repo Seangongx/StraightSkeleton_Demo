@@ -34,6 +34,13 @@ CLLNode::CLLNode(Vertex *_v, CLLNode *_f,CLLNode *_b, CLLNode * _h){
 #endif
 }
 
+CLLNode::~CLLNode() {
+	item = nullptr;
+	forward = nullptr;
+	back = nullptr;
+	head = nullptr;
+}
+
 void CLLNode::detach(){
 	back->forward = forward;
 	forward->back = back;

@@ -1,7 +1,24 @@
 ﻿  ShowSkeleton.cpp
-d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(38): warning C4018: “<”: 有符号/无符号不匹配
-d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(155): warning C4018: “<”: 有符号/无符号不匹配
-d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(164): warning C4018: “<”: 有符号/无符号不匹配
-d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(169): warning C4018: “<”: 有符号/无符号不匹配
-d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(173): warning C4018: “<”: 有符号/无符号不匹配
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(53): warning C4018: “<”: 有符号/无符号不匹配
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(65): warning C4018: “<”: 有符号/无符号不匹配
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(70): warning C4018: “<”: 有符号/无符号不匹配
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(74): warning C4018: “<”: 有符号/无符号不匹配
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(244): warning C4834: 放弃具有 "nodiscard" 属性的函数的返回值
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(245): warning C4834: 放弃具有 "nodiscard" 属性的函数的返回值
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(246): warning C4834: 放弃具有 "nodiscard" 属性的函数的返回值
+d:\github\straightskeleton_demo\straightskeletondemo\straightskeletondemo\showskeleton.cpp(247): warning C4834: 放弃具有 "nodiscard" 属性的函数的返回值
+glfw3.lib(context.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(context.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(init.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(init.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(input.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(input.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(monitor.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(monitor.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(vulkan.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(vulkan.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(window.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(window.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(win32_init.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(win32_init.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(win32_joystick.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(win32_joystick.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(win32_monitor.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(win32_monitor.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(win32_time.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(win32_time.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(win32_tls.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(win32_tls.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(win32_window.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(win32_window.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(wgl_context.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(wgl_context.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+glfw3.lib(egl_context.obj) : warning LNK4099: 未找到 PDB“vc120.pdb”(使用“glfw3.lib(egl_context.obj)”或在“D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\vc120.pdb”中寻找)；正在链接对象，如同没有调试信息一样
   StraightSkeletonDemo.vcxproj -> D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\Debug\StraightSkeletonDemo.exe

@@ -12,8 +12,8 @@ public:
 
     CLLNode();
     CLLNode(Vertex *_v);
-	//CLLNode(Vertex *_v);
 	CLLNode(Vertex *_value, CLLNode *_f, CLLNode *_b, CLLNode *_h);
+	~CLLNode();
 
 	void setHead(CLLNode *head);
     void detach();

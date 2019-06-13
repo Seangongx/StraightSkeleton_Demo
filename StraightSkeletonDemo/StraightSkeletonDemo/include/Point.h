@@ -7,7 +7,7 @@ using namespace std;
 //点的精度
 constexpr double DISTANCE = 0.000001;
 
-template<class T>
+template <class T>
 class Point {
 public:
 	T x, y;
@@ -15,11 +15,12 @@ public:
 	Point() {
 		x = 0; y = 0;
 	}
-	~Point() {};
-	Point(T x, T y) {
-		this->x = x;
-		this->y = y;
+	Point(T _x, T _y) {
+		this->x = _x;
+		this->y = _y;
 	}
+	~Point() {};
+
 	bool operator == (const Point &rhs) const {
 		return (x == rhs.x && y == rhs.y);
 	}
@@ -31,7 +32,7 @@ public:
 		return P;
 	}
 	void print() {
-		cout << "(" << x << "," << y << ")" << endl;
+		cout << "(" << x << "," << y << ")";
 	}
 	string toString() {
 		string re = "(" + to_string(x) + "," + to_string(y) + ")";

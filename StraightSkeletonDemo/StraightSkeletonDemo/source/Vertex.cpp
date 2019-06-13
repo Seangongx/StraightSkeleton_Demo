@@ -3,18 +3,22 @@
 Vertex::Vertex(double x, double y){
 	coord = Point<double>(x, y);
 	bisector = new Ray();
-	inEdge = NULL;
-	outEdge = NULL;
+	inEdge = nullptr;
+	outEdge = nullptr;
 }
 
 Vertex::Vertex(Point<double> X){
 	coord = X;
 	bisector = new Ray();
-	inEdge = NULL;
-	outEdge = NULL;
+	inEdge = nullptr	;
+	outEdge = nullptr;
 }
 
-Vertex::~Vertex() {};
+Vertex::~Vertex() {
+	delete bisector;
+	delete inEdge;
+	delete outEdge;
+};
 
 
 //感觉并不会有什么引用

@@ -5,8 +5,18 @@ CLL::CLL(){
 	head = nullptr;
 }
 
-CLL::CLL(CLLNode* head){
+CLL::CLL(CLLNode* head) {
     this->head = head;
+}
+
+int CLL::Size() {
+	int count = 0;
+	CLLNode *first = head, *last = head->back;
+	while (first != last) {
+		count++;
+		first = first->forward;
+	}
+	return count;
 }
 
 bool CLL::verifyNode(CLLNode* node){

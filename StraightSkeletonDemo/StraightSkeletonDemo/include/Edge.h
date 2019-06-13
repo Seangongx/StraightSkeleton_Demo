@@ -9,17 +9,19 @@ public:
 	Line edgeline;//TODO:
 
 	Edge() {};
-	~Edge() {};
-	Edge(Point<double> start, Point<double> end){
-		this->start = start;
-		this->end = end;
+	Edge(Point<double> _start, Point<double> _end){
+		this->start = _start;
+		this->end = _end;
+		edgeline = Line(_start, _end);
 	}
+	~Edge() {};
 
 	void print(){
-		cout << "[" << start.toString() << " -> " << end.toString() << "]" << endl;
+		cout << "[" << start.toString() << " -> " << end.toString() << "] : ";
+		edgeline.print();
 	}
 	string toString(){
-		string re = "[" + start.toString() + " -> " + end.toString() + "]";
+		string re = "[" + start.toString() + " -> " + end.toString() + "] : " + edgeline.toString();
 		return re;
 	}
 };

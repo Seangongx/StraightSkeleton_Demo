@@ -5,11 +5,12 @@
 class CLL{
 public:
 	CLLNode *head;
+	//int count;
 
 	CLL();
 	CLL(CLLNode *head);
 
-
+	int Size();
     void print();
 	bool verifyNode(CLLNode *node);
     //void addLast(Vertex *_v);

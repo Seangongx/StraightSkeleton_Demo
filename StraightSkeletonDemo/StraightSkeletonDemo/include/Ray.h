@@ -9,9 +9,11 @@ public:
 	Point<double> source;
 	Direction direction;
 	Line rayline;
+
     Ray();
 	Ray(Point<double> s, Direction dir);
 	~Ray();
+
 	Line getSupportingLine();
 	void print();
 };
