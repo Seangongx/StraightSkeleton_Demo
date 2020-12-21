@@ -5,15 +5,21 @@
 class CLL{
 public:
 	CLLNode *head;
-	//int count;
+	//需要更新的size大小
+	int size;
 
 	CLL();
-	CLL(CLLNode *head);
+	CLL(CLLNode *_head);
+	~CLL();
 
-	int Size();
+	int getSize();
     void print();
-	bool verifyNode(CLLNode *node);
-    //void addLast(Vertex *_v);
-	void addLast(CLLNode *vertex, CLLNode *forward, CLLNode *back);
+	bool verifyNode(CLLNode *node);//没啥用
+	bool isEmpty();
+	void showRemain(V_P_P &Arc);
+	void insertNode(CLLNode *node, CLLNode *forward, CLLNode *back);
+	void addLast(CLLNode *vertex);
+	void detachNode(CLLNode *node, CLLNode *its);
+	void updateHead(CLLNode *newhead);
 };
 #endif

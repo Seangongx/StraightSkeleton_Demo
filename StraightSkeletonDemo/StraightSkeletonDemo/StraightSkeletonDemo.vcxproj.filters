@@ -27,13 +27,16 @@
     <ClCompile Include="source\CLLNode.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="source\Intersection.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="source\StraightSkeleton.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="glad.c">
+    <ClCompile Include="msvcVersion.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ShowSkeleton.cpp">
@@ -65,13 +68,13 @@
     <ClInclude Include="include\CLLNode.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="include\Intersection.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="include\StraightSkeleton.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\shader.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -7,92 +7,136 @@ double StraightSkeleton::dist(Point<double> v1, Point<double> v2) {
 	return sqrt(dx * dx + dy * dy);
 }
 
-bool StraightSkeleton::insidePoly(CLLNode *head, Point<double> Pos){
-	bool result = false;
-	CLLNode *current = head, *next = current->forward;
-	while (next != head) {
-		if ((current->item->coord.y > Pos.y) != (next->item->coord.y > Pos.y) &&
-			(Pos.x < 
-				(next->item->coord.x - current->item->coord.x) * 
-					(Pos.y - current->item->coord.y) / 
-						(next->item->coord.y - current->item->coord.y) + 
-							current->item->coord.x)) {
-			result = !result;
-		}
-	}
-	return result;
-}
-//for (i = 0, j = nvert - 1; i < nvert; j = i++) {
-//	if (((verty[i] > testy) != (verty[j] > testy)) &&
-//		(testx < (vertx[j] - vertx[i]) * (testy - verty[i]) / (verty[j] - verty[i]) + vertx[i]))
-//		c = !c;
-//}
-
-StraightSkeleton::StraightSkeleton(vector<Point<double>> P) {
-	cout << "//created Vertices from points" << endl;
+void StraightSkeleton::initialVertex(vector<Point<double>> P) {
 	for (int i = 0; i < P.size(); i++) {
 		Vertex *tempVi = new Vertex(P[i]);
 		CLLNode *Vi = new CLLNode(tempVi);
-		V_T.push_back(Vi);
+		CLLNode *Vc = new CLLNode(tempVi);
+		V_T.push_back(Vc);
+		cllist.addLast(Vi);
 	}
 
-	cout << "//add the vertices to the circular linked list" << endl;
-	CLL* lav(new CLL());
 	int VTsize = V_T.size();
+	VTsize = cllist.size;
+
 	for (int current = 0; current < VTsize; current++) {
 		int forward = current + 1, backward = current - 1;
 		if (forward >= VTsize)
 			forward = 0;
 		if (backward < 0)
 			backward = VTsize - 1;
-		//V_T[current]->item->coord.print();
-		lav->addLast(V_T[current], V_T[forward], V_T[backward]);
+		V_T[current]->head = cllist.head;
+		V_T[current]->next = V_T[forward];
+		V_T[current]->prev = V_T[backward];
+		V_T[forward]->prev = V_T[current];
+		V_T[backward]->next = V_T[current];
 	}
-	lav->print();
+
+	cllist.print();
+}
+
+void StraightSkeleton::initialEdge() {
+	int VTsize = V_T.size();
+	VTsize = cllist.size;
+
+	Edge *En = new Edge(cllist.head->prev->item->coord, cllist.head->item->coord);
+	cllist.head->item->inEdge = En;
+	cllist.head->prev->item->outEdge = En;
+	E_T.push_back(En);
+	for (CLLNode *ptr = cllist.head->next; ptr != cllist.head; ptr = ptr->next) {
+		Edge *En = new Edge(ptr->prev->item->coord, ptr->item->coord);
+		ptr->item->inEdge = En;
+		ptr->prev->item->outEdge = En;
+		E_T.push_back(En);
+	}
+
+#ifdef INFORMATION
+	cout << ptr->item->coord.toString() << "inEdge:" << ptr->item->inEdge->toString() << endl;
+	cout << ptr->prev->item->coord.toString() << "outEdge:" << ptr->prev->item->outEdge->toString() << endl;
+#endif
+}
+
+void StraightSkeleton::initialBisector() {
+	cllist.head->item->calculateBisector();
+	for (CLLNode *ptr = cllist.head->next; ptr != cllist.head; ptr = ptr->next) {
+		ptr->item->calculateBisector();
+	}
+}
+
+void StraightSkeleton::initialIntersection() {
+	findNearestI(cllist.head->prev, cllist.head, cllist.head->next, 0.0);
+	for (CLLNode *cur= cllist.head->next; cur!= cllist.head; cur = cur->next) {
+		findNearestI(cur->prev, cur, cur->next, 0.0);
+	}
+}
+
+void StraightSkeleton::initialEvent() {
+	cllist.head->item->setType(NONE);
+	for (CLLNode *cur = cllist.head->next; cur != cllist.head; cur = cur->next) {
+		cur->item->setType(NONE);
+	}
+}
+
+
+StraightSkeleton::StraightSkeleton(vector<Point<double>> P) {
+	cout << "//created Vertices from points,and add the vertices to the circular linked list" << endl;
+	initialVertex(P);
 
 	cout << "//link edges one by one" << endl;
-	//首尾相连的第一条边
-	Edge *En = new Edge(V_T[VTsize - 1]->item->coord, V_T[0]->item->coord);
-	E_T.push_back(En);
-	V_T[0]->item->inEdge = En;
-	V_T[VTsize - 1]->item->outEdge = En;
-#ifdef INFORMATION
-	cout << V_T[0]->item->coord.toString() << "inEdge:" << V_T[0]->item->inEdge->toString() << endl;
-	cout << V_T[VTsize - 1]->item->coord.toString() << "outEdge:" << V_T[VTsize - 1]->item->outEdge->toString() << endl;
-#endif
-	for (int i = 1; i < VTsize; i++) {
-		Edge *Ei = new Edge(V_T[i - 1]->item->coord, V_T[i]->item->coord);
-		V_T[i]->item->inEdge = Ei;
-		V_T[i - 1]->item->outEdge = Ei;
-		E_T.push_back(Ei);
-#ifdef INFORMATION
-		cout << V_T[i]->item->coord.toString() << "inEdge" << V_T[i]->item->inEdge->toString() << endl;
-		cout << V_T[i - 1]->item->coord.toString() << "outEdge" << V_T[i - 1]->item->outEdge->toString() << endl;
-#endif
-	}
+	initialEdge();
 
 	cout << "//calculate bisector of all vertices" << endl;
-	for (int i = 0; i < VTsize; i++) {
-		V_T[i]->item->calculateBisector();
-	}
+	initialBisector();
 
 	cout << "//for each vertex V compute the nearer intersection of the bisector bi with adjacent vertex bisectors bi-1 and bi+1" << endl;
-	int N = VTsize;
-	findNearestI(V_T[N - 2], V_T[N - 1], V_T[0], 0.0);
-	findNearestI(V_T[N - 1], V_T[0], V_T[1], 0.0);
-	for (int i = 1; i < N - 1; i++) {
-		findNearestI(V_T[i - 1], V_T[i], V_T[i + 1], 0.0);
-	}
+	initialIntersection();
+
+	cout << "//for each vertex V compute the state of event" << endl;
+	initialEvent();
 
 	processIntersections();
 }
 
+//注意为逆时针判断
+bool StraightSkeleton::insidePoly(CLLNode *head, Point<double> Pos) {
+	bool result = false;
+	CLLNode *cur = head->next, *bck = cur->prev;
+
+	while (cur != head) {
+		if ((cur->item->coord.y > Pos.y) != (bck->item->coord.y > Pos.y) &&
+			(Pos.x > (Pos.y - cur->item->coord.y) *
+			(bck->item->coord.x - cur->item->coord.x) /
+				(bck->item->coord.y - cur->item->coord.y) +
+				cur->item->coord.x)) {
+			result = !result;
+		}
+		cur = cur->next;
+		bck = cur->prev;
+	}
+	if ((cur->item->coord.y > Pos.y) != (bck->item->coord.y > Pos.y) &&
+		(Pos.x > (Pos.y - cur->item->coord.y) *
+		(bck->item->coord.x - cur->item->coord.x) /
+			(bck->item->coord.y - cur->item->coord.y) +
+			cur->item->coord.x)) {
+		result = !result;
+	}
+	return result;
+}
+
+
+bool StraightSkeleton::noInter() {
+	if (cllist.head != nullptr && cllist.head->item->type == INTER)
+		return false;
+	CLLNode *point = cllist.head->next;
+	for (; point != cllist.head; point = point->next) {
+		if (point != nullptr && point->item->type == INTER)
+			return false;
+	}
+	return true;
+}
+
 //最复杂的函数
 void StraightSkeleton::findNearestI(CLLNode *vminus1, CLLNode *v, CLLNode *vplus1, double oldDis){
-	//if (v->back->back->item == vminus1->item || v->forward->forward->item == vplus1->item) {
-	//	return;
-	//}
-
 	Intersection Iminus1(vminus1, v);
 	Intersection Iplus1(v, vplus1);
     Intersection res;
@@ -104,8 +148,6 @@ void StraightSkeleton::findNearestI(CLLNode *vminus1, CLLNode *v, CLLNode *vplus
 	if (Iplus1.intersected && Iminus1.distance > Iplus1.distance)
 		res = Iplus1;
 
-	//if (Iplus1.intersected && dist(res.Pos , v->item->coord) > dist(Iplus1.Pos, v->item->coord))
-	//	res = Iplus1;
 	if (oldDis > 0.0) {
 		res.distance += oldDis;
 	}
@@ -122,56 +164,34 @@ void StraightSkeleton::processIntersections(){
     while(!PQ.empty()){
         Intersection X = PQ.top();
         PQ.pop();
-		//if(insidePoly(, X.Pos))
-        if(X.isProcessed())//如果X两个的两个标记均为已处理，则跳过，循环继续
-            continue;
-        if(X.createArc(Arc))//否则直接添加骨架，边事件处理，只有当成为最后三条骨架时才continue
-            continue;
-        X.Va->item->processed = true;
-        X.Vb->item->processed = true;
-		//X.Va->detach();
-		//X.Vb->detach();
-		CLLNode* cllnv = X.createInterNode();
+		if (insidePoly(cllist.head, X.Pos)) {
+			if (X.isProcessed())//如果X两个的两个标记均为已处理，则跳过，循环继续
+				continue;
+			if (X.createArc(Arc))//否则直接添加骨架，边事件处理，只有当成为最后三条骨架时才continue
+			{
+				cllist.head = nullptr;
+				cllist.size = 0;//应该释放链表才对；
+				break;
+			}
+			X.Va->item->processed = true;
+			X.Vb->item->processed = true;
+			CLLNode* cllnv = X.createInterNode();
+			cllist.insertNode(cllnv, X.Vb->next, X.Va->prev);
+			cllist.detachNode(X.Va, cllnv);
+			cllist.detachNode(X.Vb, cllnv);
 #ifdef INFORMATION
-		cout << "//mark " << X.Pos.toString() << " va, vb as processed" << endl;
-		cout << "//create new vertex for intersection and return a CLLNode" << endl; 
-		cout << "//compute the nearer intersection of the bisector bi with adjacent vertex bisectors bi-1 and bi+1" << endl;
-		cout << "The intersection is :" << cllnv->item->coord.toString() << endl;
-		cout << "and the bisector is :"; cllnv->item->bisector->print();
-		cout << "//push it into the priority queue" << endl;
+			cout << "//mark " << X.Pos.toString() << " va, vb as processed" << endl;
+			cout << "//create new vertex for intersection and return a CLLNode" << endl;
+			cout << "//compute the nearer intersection of the bisector bi with adjacent vertex bisectors bi-1 and bi+1" << endl;
+			cout << "The intersection is :" << cllnv->item->coord.toString() << endl;
+			cout << "and the bisector is :"; cllnv->item->bisector->print();
+			cout << "//push it into the priority queue" << endl;
 #endif
-        findNearestI(cllnv->back, cllnv, cllnv->forward, X.distance);
+			findNearestI(cllnv->prev, cllnv, cllnv->next, X.distance);
+		}
+		cllist.print();
     }
-}
-
-
-//if (Iminus1.intersected || Iplus1.intersected)中的逻辑
-/*if (I_T.size() == 0)//第一轮，当I_T中没有任何元素是
-{
-	I_T.push_back(res);
-	PQ.push(res);
-	return;
-}
-for (it = I_T.begin(); it != I_T.end(); it++)
-{
-	if (res == *it)
-	{
-		break;
+	if (!cllist.isEmpty()) {
+		cllist.showRemain(Arc);
 	}
 }
-if (it == I_T.end())
-{
-	if (I_T[I_T.size() - 1].distance >= res.distance)
-	{
-		if (I_T[I_T.size() - 1] == res)
-		{
-			return;
-		}
-		else
-		{
-			PQ.push(res);
-		}
-	}
-	I_T.push_back(res);
-}
-*/

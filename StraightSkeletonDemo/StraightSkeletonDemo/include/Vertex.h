@@ -5,8 +5,10 @@
 #include "Ray.h"
 
 enum Type{
+	NONE,
 	EDGE, 
-	SPLIT
+	SPLIT,
+	INTER
 };
 
 class Vertex{
@@ -15,7 +17,6 @@ public:
 	Ray *bisector;
 	Edge *inEdge;
 	Edge *outEdge;
-    //CLLNode *cllNode;
 	bool processed;
 	Type type;
 
@@ -25,7 +26,7 @@ public:
 
 	Vertex operator - (const Vertex &rhs);
 	double operator * (const Vertex &rhs);
-	Type getType();
     void calculateBisector();
+	void setType(Type t);
 };
 #endif

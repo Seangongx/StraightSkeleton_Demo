@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\StraightSkeletonDemo\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\StraightSkeletonDemo\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\StraightSkeletonDemo\include;D:\mySDK\boost_1_68_0;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\GitHub\StraightSkeleton_Demo\StraightSkeletonDemo\StraightSkeletonDemo\lib;D:\mySDK\boost_1_68_0\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -97,6 +97,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -160,6 +161,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="glad.c" />
+    <ClCompile Include="msvcVersion.cpp" />
     <ClCompile Include="ShowSkeleton.cpp" />
     <ClCompile Include="source\CLL.cpp" />
     <ClCompile Include="source\CLLNode.cpp" />

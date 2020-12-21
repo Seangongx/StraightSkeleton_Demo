@@ -32,13 +32,20 @@ double Vertex::operator * (const Vertex &rhs){
 }
 
 //计算几何判断
-Type Vertex::getType(){
-	Direction in(inEdge->start, inEdge->end), out(outEdge->start, outEdge->end);
-	if((in * out) > 0)//面积大于零则第二条方向位于第一条左边（逆时针方向）
-		type = EDGE;
-	else
-		type = SPLIT;
-	return type;
+void Vertex::setType(Type t){
+	if (t == NONE) {
+		Direction in(inEdge->start, inEdge->end), out(outEdge->start, outEdge->end);
+		if ((in * out) > 0)//面积大于零则第二条方向位于第一条左边（逆时针方向）
+			this->type = EDGE;
+		else
+			this->type = SPLIT;
+	}
+	else if (t == INTER) {
+		this->type = INTER;
+	}
+	else {
+		this->type = NONE;
+	}
 }
 
 void Vertex::calculateBisector(){

@@ -84,14 +84,14 @@ bool Intersection::isProcessed() {
 bool Intersection::createArc(V_P_P &Arc) {
 	Point<double> Pa = Va->item->coord;
 	Point<double> Pb = Vb->item->coord;
-	if (Va->back->back->item == Vb->item) {
-		Point<double> Pc = Va->back->item->coord;
+	if (Va->prev->prev->item == Vb->item) {
+		Point<double> Pc = Va->prev->item->coord;
 		Arc.push_back(make_pair(Pa, Pos));
 		Arc.push_back(make_pair(Pb, Pos));
 		Arc.push_back(make_pair(Pc, Pos));
 		Va->item->processed = true;
 		Vb->item->processed = true;
-		Va->back->item->processed = true;//也就是Pc
+		Va->prev->item->processed = true;//也就是Pc
 		return true;
 	}
 	Arc.push_back(make_pair(Pa, Pos));
@@ -101,11 +101,11 @@ bool Intersection::createArc(V_P_P &Arc) {
 
 CLLNode* Intersection::createInterNode() {
 	Vertex *v = new Vertex(Pos);
-	CLLNode *clln = new CLLNode(v, Vb->forward, Va->back, Va->head);//注意初始化函数的参数
-	//clln->insertBetween(Vb->forward, Va->back);//注意初始化函数的参数
+	CLLNode *clln = new CLLNode(v);//注意初始化函数的参数
 	clln->item->inEdge = Va->item->inEdge;
 	clln->item->outEdge = Vb->item->outEdge;
 	clln->item->calculateBisector();
+	clln->item->setType(INTER);
 	return clln;
 }
 

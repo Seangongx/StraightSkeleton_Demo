@@ -6,8 +6,6 @@
 
 //constexpr double DISTANCE = 0.000001;
 
-#define V_P_P vector<pair<Point<double>, Point<double>>>
-
 class Intersection{
 public:
 	double distance;
@@ -26,6 +24,7 @@ public:
 	void intersect(Ray* ray1, Ray* ray2);
 	double getDistance();
 	void swapV();//不一定用得上
+	//bool noInter();
     bool isProcessed();
 	bool createArc(V_P_P &Arc);
 	bool operator == (const Intersection &rhs) const;

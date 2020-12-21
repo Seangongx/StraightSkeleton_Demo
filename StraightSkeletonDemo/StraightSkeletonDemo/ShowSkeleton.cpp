@@ -6,6 +6,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 #include <vector>
+#include <ctime>
 //#include <GL/gl.h>
 
 using namespace std;
@@ -66,7 +67,15 @@ void processKeyboardInput(GLFWwindow *window) {
 				Point<double> newp(Points[i].x, Points[i].y);
 				SPoints.push_back(newp);
 			}
+
+			clock_t beginTime, endTime;
+			beginTime = clock();
 			StraightSkeleton SS(SPoints);
+			endTime = clock();
+			cout << endl << "Cost Time is " 
+				<<(double)(endTime - beginTime) / CLOCKS_PER_SEC 
+				<< "s" << endl;
+
 			for (int i = 0; i < SS.Arc.size(); i++) {
 				linePoints.push_back(vec3(SS.Arc[i].first.x, SS.Arc[i].first.y, 0));
 				linePoints.push_back(vec3(SS.Arc[i].second.x, SS.Arc[i].second.y, 0));
